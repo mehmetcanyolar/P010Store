@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 namespace P010Store.Entities
 {
-    public class Carousel
+    public class Carousel : IEntity
     {
         public int Id { get; set; }
         [Display(Name = "Başlık"), StringLength(150)]
