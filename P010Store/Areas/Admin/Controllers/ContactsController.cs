@@ -2,55 +2,50 @@
 using Microsoft.AspNetCore.Mvc;
 using P010Store.Entities;
 using P010Store.Service.Abstract;
-using P010Store.WebUI.Utils;
-using System.Drawing;
 
 namespace P010Store.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class CategoriesController : Controller
+    public class ContactsController : Controller
     {
-        private readonly IService<Category> _service;
+        private readonly IService<Contact> _service;
 
-        public CategoriesController(IService<Category> service)
+        public ContactsController(IService<Contact> service)
         {
             _service = service;
         }
 
-        // GET: CategoriesController
-        public  async Task<ActionResult> Index()
+
+        // GET: ContactsController
+        public async Task<ActionResult> Index()
         {
             var model = await _service.GetAllAsync();
             return View(model);
         }
 
-        // GET: CategoriesController/Details/5
+        // GET: ContactsController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: CategoriesController/Create
+        // GET: ContactsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CategoriesController/Create
+        // POST: ContactsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateAsync(Category category,IFormFile? Image)
+        public async Task<ActionResult> Create(Contact contact)
         {
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (Image != null) { category.Image = await FileHelper.FileLoaderAsync(Image); }
-
-                    await _service.AddAsync(category);
+                    await _service.AddAsync(contact);
                     await _service.SaveChangesAsync();
-
                     return RedirectToAction(nameof(Index));
                 }
                 catch
@@ -58,64 +53,64 @@ namespace P010Store.WebUI.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Hata Oluştu! ");
                 }
             }
-          
-            return View(category);
+           
+            return View(contact);
         }
 
-        // GET: CategoriesController/Edit/5
-        public async Task< ActionResult> Edit(int id)
+        // GET: ContactsController/Edit/5
+        public async Task<ActionResult> Edit(int id)
         {
             var model = await _service.FindAsync(id);
             return View(model);
         }
 
-        // POST: CategoriesController/Edit/5
+        // POST: ContactsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, Category category,IFormFile? Image,bool cbResimSil)
+        public async Task<ActionResult> EditAsync(int id, Contact contact)
         {
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    if (Image != null) category.Image = await FileHelper.FileLoaderAsync(Image);
-                    _service.Update(category);
+                    _service.Update(contact);
                     await _service.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 catch
                 {
-                    ModelState.AddModelError("", "Hata oluştu! ");
+                    ModelState.AddModelError("", "Hata Oluştu! ");
                 }
             }
-           
-            return View(category);
+
+            return View(contact);
         }
 
-        // GET: CategoriesController/Delete/5
+        // GET: ContactsController/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
             var model = await _service.FindAsync(id);
             return View(model);
         }
 
-        // POST: CategoriesController/Delete/5
+        // POST: ContactsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id,  Category category)
+        public async Task<ActionResult> DeleteAsync(int id, Contact contact)
         {
             try
             {
-                _service.Delete(category);
+                _service.Delete(contact);
                 await _service.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                ModelState.AddModelError("","Hata Oluştu ! ");
+                ModelState.AddModelError("", "Hata Oluştu! ");
             }
-            return View(category);
+        
+
+            return View(contact);
         }
     }
 }

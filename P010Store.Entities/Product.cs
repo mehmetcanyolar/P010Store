@@ -16,7 +16,7 @@ namespace P010Store.Entities
         [Display(Name = "Ekleme Tarihi"), ScaffoldColumn(false)]
         public DateTime? CreateDate { get; set; } = DateTime.Now;
 
-        [Display(Name = "Gücenllenme Tarihi")]
+        [Display(Name = "Gücenllenme Tarihi"), ScaffoldColumn(false)]
         public DateTime? UpdateDate { get; set; } = DateTime.Now;
         [Display(Name = "Durum")]
         public bool IsActive { get; set; }
