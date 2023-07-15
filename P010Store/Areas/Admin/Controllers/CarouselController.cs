@@ -83,6 +83,13 @@ namespace P010Store.WebUI.Areas.Admin.Controllers
             {
                 try
                 {
+                    if(cbResimSil== true)
+                    {
+                        FileHelper.FileRemover(carousel.Image);
+                        carousel.Image = string.Empty;
+
+                    }
+
                     if (Image is not null) carousel.Image = await FileHelper.FileLoaderAsync(Image);
 
                    _service.Update(carousel);

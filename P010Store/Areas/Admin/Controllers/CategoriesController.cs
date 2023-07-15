@@ -79,6 +79,10 @@ namespace P010Store.WebUI.Areas.Admin.Controllers
             {
                 try
                 {
+                    if (cbResimSil) {
+                        FileHelper.FileRemover(category.Image);
+                        category.Image =string.Empty;
+                    }
                     if (Image != null) category.Image = await FileHelper.FileLoaderAsync(Image);
                     _service.Update(category);
                     await _service.SaveChangesAsync();
