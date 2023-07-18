@@ -16,16 +16,19 @@ namespace P010Store.WebUI.Areas.Admin.Controllers
 
         private readonly IService<Brand> _serviceBrand;
 
-        public ProductsController(IService<Product> service, IService<Category> serviceCategory,IService<Brand> serviceBrand)
+        private readonly IProductService _productService;
+
+        public ProductsController(IService<Product> service, IService<Category> serviceCategory, IService<Brand> serviceBrand, IProductService productService)
         {
             _service = service;
             _serviceCategory = serviceCategory;
             _serviceBrand = serviceBrand;
+            _productService = productService;
         }
         // GET: ProductsController
         public async Task<ActionResult> Index()
         {
-            var model = await _service.GetAllAsync();
+            var model = await _productService.GetAllProductsByCategoriesBrandsAsync();
             return View(model);
         }
 

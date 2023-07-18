@@ -1,4 +1,4 @@
-
+﻿
 
 using P010Store.Data;
 using P010Store.Data.Abstract;
@@ -16,6 +16,10 @@ builder.Services.AddDbContext<DatabaseContext>();
 
 builder.Services.AddTransient(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
+
+builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
+
+//builder.Services.AddTransient<IProductService,ProductService>(); -- şeklinde de yazım yapılabilir ikiside çalışıyor
 
 var app = builder.Build();
 
