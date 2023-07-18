@@ -60,6 +60,37 @@ namespace P010Store.WebUI.Areas.Admin.Controllers
             return View(brand);
         }
 
+
+        //Modal Product Create nin Modal ı için Create2 ama redirectTo product
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create2(Brand brand, IFormFile? Logo)
+        {
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+
+                    brand.Logo = await FileHelper.FileLoaderAsync(Logo);
+                    _service.Add(brand);
+                    _service.SaveChanges();
+
+                    return RedirectToAction("Create","Products");
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Hata Oluştu! ");
+                }
+            }
+
+            return View(brand);
+        }
+
+
+
         // GET: BrandsController/Edit/5
         public async Task<IActionResult> EditAsync(int id)
         {

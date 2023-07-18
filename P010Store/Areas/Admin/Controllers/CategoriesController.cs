@@ -62,6 +62,35 @@ namespace P010Store.WebUI.Areas.Admin.Controllers
             return View(category);
         }
 
+        //Products In Create page için oluşturulan Modal ın Create2 metodu için
+
+      
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create2(Category category , IFormFile? Image)
+        {
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+
+                    category.Image = await FileHelper.FileLoaderAsync(Image);
+                    _service.Add(category);
+                    _service.SaveChanges();
+
+                    return RedirectToAction("Create","Products");
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "Hata Oluştu! ");
+                }
+            }
+
+            return View(category);
+        }
+
         // GET: CategoriesController/Edit/5
         public async Task< ActionResult> Edit(int id)
         {
