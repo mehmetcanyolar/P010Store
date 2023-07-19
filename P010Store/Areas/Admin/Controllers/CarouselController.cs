@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using P010Store.Entities;
@@ -7,7 +8,7 @@ using P010Store.WebUI.Utils;
 
 namespace P010Store.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"), Authorize]
     public class CarouselController : Controller
     {
         private readonly IService<Carousel> _service;

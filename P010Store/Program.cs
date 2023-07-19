@@ -5,6 +5,7 @@ using P010Store.Data.Abstract;
 using P010Store.Data.Concrete;
 using P010Store.Service.Abstract;
 using P010Store.Service.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,15 @@ builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 
 //builder.Services.AddTransient<IProductService,ProductService>(); -- şeklinde de yazım yapılabilir ikiside çalışıyor
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x=>
+{
+    x.LoginPath = "/Admin/Login";
+    x.AccessDeniedPath = "/AccessDenied";
+    x.LogoutPath = "/Admin/Login/Logout";
+    x.Cookie.Name = "Administrator";
+    x.Cookie.MaxAge = TimeSpan.FromDays(1);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,6 +45,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
