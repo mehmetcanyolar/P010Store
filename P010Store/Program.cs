@@ -15,14 +15,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DatabaseContext>();
 
 
-builder.Services.AddTransient(typeof(IRepository<>),typeof(Repository<>));
+builder.Services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddTransient(typeof(IService<>), typeof(Service<>));
 
 builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 
 //builder.Services.AddTransient<IProductService,ProductService>(); -- şeklinde de yazım yapılabilir ikiside çalışıyor
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x=>
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {
     x.LoginPath = "/Admin/Login";
     x.AccessDeniedPath = "/AccessDenied";
@@ -30,6 +30,18 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     x.Cookie.Name = "Administrator";
     x.Cookie.MaxAge = TimeSpan.FromDays(1);
 });
+
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("AdminPolicy",policy => policy.RequireClaim("Role","Admin"));
+    x.AddPolicy("UserPolicy",policy => policy.RequireClaim("Role", "User"));
+
+
+
+});
+    
+
+
 
 var app = builder.Build();
 

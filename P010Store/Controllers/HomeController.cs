@@ -18,7 +18,8 @@ namespace P010Store.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        [Route("AccessDenied")]
+        public IActionResult AccessDenied()
         {
             return View();
         }
