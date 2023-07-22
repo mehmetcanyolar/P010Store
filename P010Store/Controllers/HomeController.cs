@@ -1,21 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using P010Store.Entities;
 using P010Store.Models;
+using P010Store.Service.Abstract;
 using System.Diagnostics;
 
 namespace P010Store.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IService<Product> _service;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IService<Product> service)
         {
-            _logger = logger;
+            _service = service;
         }
 
-        public IActionResult Index()
+      
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var model = await _service.GetAllAsync();
+            return View(model);
         }
 
         [Route("AccessDenied")]
