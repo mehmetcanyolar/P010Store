@@ -12,7 +12,7 @@ namespace P010Store.Data.Concrete
 
         public async Task<IEnumerable<Product>> GetAllProductsByCategoriesBrandsAsync()
         {
-            return await context.Products.Include(c=>c.Category).Include(b=>b.Brand).ToListAsync();
+            return await context.Products.Include(c=>c.Category).Include(b=>b.Brand).AsNoTracking().ToListAsync();
         }
     }
 }

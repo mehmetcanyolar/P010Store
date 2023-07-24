@@ -2,6 +2,7 @@
 using P010Store.Entities;
 using P010Store.Models;
 using P010Store.Service.Abstract;
+using P010Store.WebUI.Models;
 using System.Diagnostics;
 
 namespace P010Store.Controllers
@@ -10,16 +11,28 @@ namespace P010Store.Controllers
     {
         private readonly IService<Product> _service;
 
-        public HomeController(IService<Product> service)
+        private readonly IService<Carousel> _serviceCarousel;
+        private readonly IService<Brand> _serviceBrand;
+
+        public HomeController(IService<Product> service, IService<Carousel> serviceCarousel, IService<Brand> serviceBrand)
         {
             _service = service;
+            _serviceCarousel = serviceCarousel;
+            _serviceBrand = serviceBrand;
         }
 
-      
+
 
         public async Task<IActionResult> Index()
         {
-            var model = await _service.GetAllAsync();
+            var model = new HomePageViewModel()
+            {
+                Products = await _service.GetAllAsync(p => p.IsHome),
+                Carousels= await _serviceCarousel.GetAllAsync(),
+                Brands = await _serviceBrand.GetAllAsync() 
+            };
+
+            // var model = await _service.GetAllAsync(p => p.IsHome);
             return View(model);
         }
 
