@@ -6,16 +6,16 @@ namespace P010Store.WebUI.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly IService<Category> _service;
+        private readonly ICategoryService _service;
 
-        public CategoriesController(IService<Category> service)
+        public CategoriesController(ICategoryService service)
         {
             _service = service;
         }
 
         public async Task<IActionResult> Index(int id)
         {
-            var model = await _service.FindAsync(id);
+            var model = await _service.GetProductsByCategoryAsync(id);
             return View(model);
         }
     }

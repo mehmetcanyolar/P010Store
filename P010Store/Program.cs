@@ -22,6 +22,9 @@ builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 
 //builder.Services.AddTransient<IProductService,ProductService>(); -- şeklinde de yazım yapılabilir ikiside çalışıyor
 
+builder.Services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
+
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {
     x.LoginPath = "/Admin/Login";
