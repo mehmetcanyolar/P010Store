@@ -24,6 +24,7 @@ builder.Services.AddTransient(typeof(IProductService), typeof(ProductService));
 
 builder.Services.AddTransient(typeof(ICategoryService), typeof(CategoryService));
 
+builder.Services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
 {
