@@ -17,7 +17,7 @@ namespace P010Store.Entities
         public string Email { get; set; }
 
         [Display(Name = "Telefon"), StringLength(12)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
 
         [Required(ErrorMessage = "{0} alanı boş geçilemez"), StringLength(500), Display(Name = "Mesaj")]
         public string Message { get; set; }

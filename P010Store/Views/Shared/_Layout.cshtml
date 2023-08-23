@@ -45,8 +45,8 @@
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="/">P010 Store</a>
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand" href="/"><b>P010 Store</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -66,20 +66,21 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/iletisim">İletişim</a></li>
                 </ul>
 
-                @* form-check-inline ---> form-inline*@
-                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 ">
-                    <div class="inptu-group">
-                        <input class="form-control" type="text" placeholder="Ara..." aria-label="Ara..." aria-describedby="btnNavbarSearch" />
-                        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search "></i></button>
-                    </div>
+                  <form asp-controller="Products" asp-action="Search" method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0 "> 
+                      <div class="input-group">
+                          <input name="q" class="form-control" type="text" placeholder="Ara..." aria-label="Ara..." aria-describedby="btnNavbarSearch"/>
+                          <button class="btn btn-dark" id="btnNavbarSearch" type="submit"><i class="bi bi-search "></i></button>
+                      </div>
 
-                </form>
-
+                  </form>
+                <form class="d-flex me-2">  <a class="btn btn-outline-dark" href="/Account/SignIn">  <i class=" bi bi-person-fill me-1"></i>Üye Girişi</a>  </form>
+                <form class="d-flex me-2">   <a class="btn btn-outline-dark" href="/Account/SignUp">  <i class=" bi bi-person-fill me-1"></i>Kayıt Ol</a> </form>
+              
 
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
-                        Cart
+                        Sepetim
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                     </button>
                 </form>
