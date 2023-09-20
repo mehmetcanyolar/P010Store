@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P010Store.WebUI", "P010Store\P010Store.WebUI.csproj", "{AAD45F8E-174D-4738-91D2-B62DB9A60D9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P010Store.WebUI", "P010Store\P010Store.WebUI.csproj", "{AAD45F8E-174D-4738-91D2-B62DB9A60D9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P010Store.Entities", "P010Store.Entities\P010Store.Entities.csproj", "{0B05B6B4-66B6-4073-9290-5239A1883563}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P010Store.Entities", "P010Store.Entities\P010Store.Entities.csproj", "{0B05B6B4-66B6-4073-9290-5239A1883563}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P010Store.Data", "P010Store.Data\P010Store.Data.csproj", "{BE9299EF-C932-4067-8FDA-53D23A28CC86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P010Store.Data", "P010Store.Data\P010Store.Data.csproj", "{BE9299EF-C932-4067-8FDA-53D23A28CC86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P010Store.Service", "P010.Service\P010Store.Service.csproj", "{FB6DA527-D89A-47DE-B30C-900D8C800C2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P010Store.Service", "P010.Service\P010Store.Service.csproj", "{FB6DA527-D89A-47DE-B30C-900D8C800C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P010Store.WebAPI", "P010Store.WebAPI\P010Store.WebAPI.csproj", "{A711A4F4-F7B4-4807-824D-C1D1BB69C003}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FB6DA527-D89A-47DE-B30C-900D8C800C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB6DA527-D89A-47DE-B30C-900D8C800C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB6DA527-D89A-47DE-B30C-900D8C800C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A711A4F4-F7B4-4807-824D-C1D1BB69C003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A711A4F4-F7B4-4807-824D-C1D1BB69C003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A711A4F4-F7B4-4807-824D-C1D1BB69C003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A711A4F4-F7B4-4807-824D-C1D1BB69C003}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
